@@ -4,7 +4,22 @@ public class Radio {
 
     private int currentRadioStation;
     private int currentVolume;
+    private int numberOfRadioStations = 10;
 
+    public Radio() {
+    }
+
+    public Radio(int numberOfRadioStations) {
+        this.numberOfRadioStations = numberOfRadioStations;
+    }
+
+    public int getNumberOfRadioStations() {
+        return numberOfRadioStations;
+    }
+
+    public void setNumberOfRadioStations(int numberOfRadioStations) {
+        this.numberOfRadioStations = numberOfRadioStations;
+    }
 
     public int getCurrentRadioStation() {
         return currentRadioStation;
@@ -41,8 +56,8 @@ public class Radio {
     }
 
     public void setCurrentVolume(int currentVolume) {
-        if (currentVolume > 10) {
-            this.currentVolume = 10;
+        if (currentVolume > 100) {
+            this.currentVolume = 100;
             return;
         }
         if (currentVolume < 0) {
@@ -53,7 +68,7 @@ public class Radio {
     }
 
     public void increaseVolume() {
-        if (currentVolume == 10) {
+        if (currentVolume == 100) {
             return;
         }
         currentVolume = currentVolume + 1;

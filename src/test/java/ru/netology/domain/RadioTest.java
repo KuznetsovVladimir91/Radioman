@@ -6,9 +6,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class RadioTest {
 
+    Radio radio = new Radio();
+
     @Test
     void shouldIncreaseRadioStation() {
-        Radio radio = new Radio();
         radio.setCurrentRadioStation(3);
         radio.increaseRadioStation();
         assertEquals(4, radio.getCurrentRadioStation());
@@ -16,7 +17,6 @@ class RadioTest {
 
     @Test
     void shouldTurnOnTheFirstStationAfterTheLast() {
-        Radio radio = new Radio();
         radio.setCurrentRadioStation(9);
         radio.increaseRadioStation();
         assertEquals(0, radio.getCurrentRadioStation());
@@ -24,7 +24,6 @@ class RadioTest {
 
     @Test
     void shouldDecreaseRadioStation() {
-        Radio radio = new Radio();
         radio.setCurrentRadioStation(6);
         radio.decreaseRadioStation();
         assertEquals(5, radio.getCurrentRadioStation());
@@ -32,7 +31,6 @@ class RadioTest {
 
     @Test
     void shouldTurnOnTheLastStationAfterTheFirst() {
-        Radio radio = new Radio();
         radio.setCurrentRadioStation(0);
         radio.decreaseRadioStation();
         assertEquals(9, radio.getCurrentRadioStation());
@@ -40,7 +38,6 @@ class RadioTest {
 
     @Test
     void shouldIncreaseVolume() {
-        Radio radio = new Radio();
         radio.setCurrentVolume(5);
         radio.increaseVolume();
         assertEquals(6, radio.getCurrentVolume());
@@ -48,15 +45,13 @@ class RadioTest {
 
     @Test
     void shouldLeaveTheMaximumVolume() {
-        Radio radio = new Radio();
-        radio.setCurrentVolume(10);
+        radio.setCurrentVolume(100);
         radio.increaseVolume();
-        assertEquals(10, radio.getCurrentVolume());
+        assertEquals(100, radio.getCurrentVolume());
     }
 
     @Test
     void shouldDecreaseVolume() {
-        Radio radio = new Radio();
         radio.setCurrentVolume(8);
         radio.decreaseVolume();
         assertEquals(7, radio.getCurrentVolume());
@@ -64,7 +59,6 @@ class RadioTest {
 
     @Test
     void shouldLeaveTheMinimumVolume() {
-        Radio radio = new Radio();
         radio.setCurrentVolume(0);
         radio.decreaseVolume();
         assertEquals(0, radio.getCurrentVolume());
@@ -72,30 +66,34 @@ class RadioTest {
 
     @Test
     void shouldTurnOnTheFirstStationWhenANonExistentNumberIsEntered() {
-        Radio radio = new Radio();
         radio.setCurrentRadioStation(10);
         assertEquals(0, radio.getCurrentRadioStation());
     }
 
     @Test
     void shouldTurnOnTheFirstStationWhenEnteredANumberLessThanZero() {
-        Radio radio = new Radio();
         radio.setCurrentRadioStation(-10);
         assertEquals(0, radio.getCurrentRadioStation());
     }
 
     @Test
     void shouldLeaveTheMaximumVolumeTheSame() {
-        Radio radio = new Radio();
-        radio.setCurrentVolume(11);
-        assertEquals(10, radio.getCurrentVolume());
+        radio.setCurrentVolume(101);
+        assertEquals(100, radio.getCurrentVolume());
     }
 
     @Test
     void shouldLeaveTheMinimumVolumeTheSame() {
-        Radio radio = new Radio();
         radio.setCurrentVolume(-11);
         assertEquals(0, radio.getCurrentVolume());
     }
 
+    @Test
+    void shouldSetTheNumberOfRadioStation() {
+        Radio radio = new Radio(15);
+        assertEquals(15, radio.getNumberOfRadioStations());
+    }
+
 }
+
+
